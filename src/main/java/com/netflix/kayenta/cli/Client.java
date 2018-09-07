@@ -77,7 +77,6 @@ public class Client extends HttpClient {
     String requestBody = "";
     try {
       requestBody = mapper.writeValueAsString(adhocRequestBuilder.build(configFilename, analysisStartTime, analysisEndTime));
-      System.out.println(requestBody);
     } catch (JsonProcessingException ex) {
       throw new RuntimeException("Error parsing canary adhoc execution request, reason: "+ex.getMessage(),ex);
     }
