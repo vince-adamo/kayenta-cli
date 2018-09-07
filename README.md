@@ -4,6 +4,16 @@
 
 > As described below, this project is intended to be integrated with an existing [Kayenta](https://github.com/spinnaker/kayenta/) project and has been verified up through Kayenta tag v1.0.9.
 
+### Notes:
+
+* The original project this is based upon uses a custom developed metric provider, not one of the ones supported out-of-the-box by Kayenta. So, this project has not been tested with one of the supported providers. If interested, please feel free to test it out and document any observed issues (with suggested fixes would be better).
+
+
+* Due to the use of certain lombok annotations for the specific metric config classes, these classes are hard coded to help with building the query element for the CanaryMetricConfig. There is most likely a more elegant approach, but until one has been implemented, you will have to add references to any custom providers in AdhocRequestBuilder. 
+
+
+* As noted at the bottom of this README, there is an example adhoc-request.json file that should be used as a starting point. To reduce duplication of metric definitions, the concept of "metricGroups" was added to the request json. Metrics with similar elements such as analysis configuration, custom filters/templates, group names and service type can be defined together and associated with one of the groups defined in the "classifier" element. This json is converted into concrete Kayenta classes and then converted to a JSON request string for the actual REST API request.
+
 ## Integrating into Kayenta project:
 
 - Clone this project into the top level Kayenta project source tree, e.g.:
