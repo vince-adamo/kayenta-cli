@@ -34,7 +34,7 @@
   "metricGroups": [
     {
       "groupName": "GROUP1",
-      "serviceType": "datadog",
+      "serviceType": "your-metric-store-name-here",
       "customFilterTemplate": "server.name",
       "analysisConfigurations": { 
         "canary" : {
@@ -42,11 +42,13 @@
         }
       },
       "metricNames": [
+        "first-metric-name",
+        "second-metric-name"
       ]
     },
     {
       "groupName": "GROUP2",
-      "serviceType": "datadog",
+      "serviceType": "your-metric-store-name-here",
       "customFilterTemplate": "server.name",
       "analysisConfigurations": { 
         "canary" : {
@@ -54,6 +56,8 @@
         }
       },
       "metricNames": [
+        "third-metric-name",
+        "fourth-metric-name"
       ]
     }
   ]
