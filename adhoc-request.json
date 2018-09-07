@@ -1,0 +1,60 @@
+{
+  "name": "adhoc-request",
+  "requestThresholds" : { 
+  	"marginal" : 70.00,
+  	"pass" : 90.0
+  },
+  "scopeName" : "somescope",
+  "controlScope" : {
+    "location" : "",
+    "extendedScopeParams" : {
+      "host" : "control.example.com"
+    }
+  },
+  "experimentScope" : {
+    "location" : "",
+    "extendedScopeParams" : {
+      "host" : "experiment.example.com"
+    }
+  },
+  "judge": "NetflixACAJudge-v1.0",
+  "templates": {
+    "server.name": "serverName=${host}"
+  },
+  "classifier": {
+    "groupWeights": {
+      "GROUP1": 50.0,
+      "GROUP2": 50.0
+    },
+    "scoreThresholds": {
+      "marginal": 75.0,
+      "pass": 90.0
+    }
+  },
+  "metricGroups": [
+    {
+      "groupName": "GROUP1",
+      "serviceType": "datadog",
+      "customFilterTemplate": "server.name",
+      "analysisConfigurations": { 
+        "canary" : {
+          "direction" : "increase"
+        }
+      },
+      "metricNames": [
+      ]
+    },
+    {
+      "groupName": "GROUP2",
+      "serviceType": "datadog",
+      "customFilterTemplate": "server.name",
+      "analysisConfigurations": { 
+        "canary" : {
+          "direction" : "decrease"
+        }
+      },
+      "metricNames": [
+      ]
+    }
+  ]
+}
